@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include ../partials/head %>
+  </head>
+
+  <body>
+
+  <section id="container" >
+      <!-- **********************************************************************************************************************************************************
+      TOP BAR CONTENT & NOTIFICATIONS
+      *********************************************************************************************************************************************************** -->
+      <!--header start-->
+      <header class="header black-bg">
+              <% include ../partials/header %>
+        </header>
+      <!--header end-->
+      
+      <!-- **********************************************************************************************************************************************************
+      MAIN SIDEBAR MENU
+      *********************************************************************************************************************************************************** -->
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+              
+                  <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="fa fa-desktop"></i>
+                          <span>Web Applications</span>
+                      </a>
+                      
+                      <ul class="sub">
+                        <% apps.forEach(function(app) { %>
+        				<li><a  href="#" onclick= "hidewebiFrame()"><%= app.name %></a></li>
+    					<% }); %>
+                      </ul>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="fa fa-mobile"></i>
+                          <span>Mobile Applications</span>
+                      </a>
+                      <ul class="sub">
+                         <% mapps.forEach(function(mapp) { %>
+        				<li><a  href="#" onclick= "hidewebiFrame()"><%= mapp.name %></a></li>
+    					<% }); %>
+                      </ul>
+                  </li>
+                </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+      
+      <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+                <div class="row" style="margin-top:1%">
+                    <div class="col-lg-12">
+                        <div class="panel panel-warning" style="box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);">
+                            <div class="panel-heading">
+                                Preview of <b>APPLICATION<b>
+                            </div>
+                            <div class="panel-body">
+                                   <div class="row">
+
+                                    <!-- ****************************************************************************** 
+                                        For mobile application    
+                                        ******************************************************************************
+                                    -->
+                                    <div class="col-lg-4">
+
+                                    </div>
+                                    <div id ="mobiFrameDiv" class="col-lg-4">
+                                          <iframe id="mobileiframe" src="https://appetize.io/embed/mk2ha80w533mqnvbgdupnqp4vr?device=nexus5&scale=80&autoplay=false&orientation=portrait&deviceColor=black"
+                        width="350px" height="632px" frameborder="0" scrolling="no"></iframe>  
+                                    </div>
+                                    <div class="col-lg-4">
+
+                                    </div>
+
+                                    <!-- ****************************************************************************** 
+                                        For Web application    
+                                        ******************************************************************************
+                                    -->    
+                                    <div id="webiFrameDiv" class="col-lg-12"> 
+                                    <% links.forEach(function(url) { %>
+        				<iframe id="webiframe" src=<%= url.appurl %> width="100%" height="850px" frameborder="0" scrolling="yes"></iframe>
+    					<% }); %>
+                                        
+                                    </div>
+                                   </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          </section>
+      </section>
+
+      <!-- Upload application Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content" >
+                    <div class="modal-header" style="margin:2%">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Upload Application</h4>
+                    </div>
+                    <div class="modal-body" style="margin:2%">
+                        <form action="/upload" enctype="multipart/form-data" method="post">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-upload" aria-hidden="true"></i></span>
+                                <input class="form-control" type="file" name="filefield" multiple="multiple">
+                                <span class="input-group-addon"><input type="submit" value="Upload"></span>
+                            </div>    
+                        </form>
+                    </div>
+                    <div class="modal-footer"  style="margin:2%">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      <!--main content end-->
+      <!--footer start-->
+      <footer class="site-footer" style="background-color:#8a6d3b">
+		<% include ../partials/footer %>
+      </footer>
+      <!--footer end-->
+  </section>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/jquery-1.8.3.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="assets/js/jquery.sparkline.js"></script>
+
+
+    <!--common script for all pages-->
+    <script src="assets/js/common-scripts.js"></script>
+    
+    <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+	
+	
+	<script type="text/javascript">
+	var url <%= links %>;
+        $(document).ready(function () {
+ 
+        var userName =  <%-name%>;
+        if (userName) {
+            alert(userData.name);
+            var unique_id = $.gritter.add({
+                // (string | mandatory) the heading of the notification
+                title: 'Welcome ' + userName,
+                // (string | mandatory) the text inside the notification
+                text: ' ',
+                // (string | optional) the image to display on the left
+                image: 'assets/img/ui-sam.jpg',
+                // (bool | optional) if you want it to fade out on its own or just sit there
+                sticky: false,
+                // (int | optional) the time you want it to be alive for before fading out
+                time: '10',
+                // (string | optional) the class name you want to apply to that specific message
+                class_name: 'my-sticky-class'
+            });
+        }
+        
+        
+        hidewebiFrame();
+        hidemobiFrame();
+        return false;
+        });
+        
+        function hidewebiFrame(){
+			var wf = document.getElementById("webiFrameDiv");
+			if (wf.style.display != 'none') {
+				wf.style.display = 'none';
+			}else{
+				wf.style.display = 'block';
+			}
+        }
+        function hidemobiFrame(){
+			var mf = document.getElementById("mobiFrameDiv");
+			if (mf.style.display != 'none') {
+				mf.style.display = 'none';
+			}else{
+				mf.style.display = 'block';
+			}
+        }
+	</script>
+	
+	<script type="application/javascript">
+        $(document).ready(function () {
+            var appsList = <%-JSON.stringify(apps)%>;
+            console.log('*********************************************');
+            console.log(appsList);
+            console.log('*********************************************');
+        });
+    </script>
+  </body>
+</html>

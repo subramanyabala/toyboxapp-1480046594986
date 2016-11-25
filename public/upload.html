@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>TOYBOX</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+  <link rel="stylesheet" href="stylesheets/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="stylesheets/bootstrap3.3.7.min.css">
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/jquery.multi.js"></script>
+  <script type="text/javascript" src="js/jquery1.12.4.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap3.3.7.min.js"></script>
+    <script>
+function localStore() {
+	document.getElementById("name").innerHTML = sessionStorage.userName;
+}
+  </script>
+  <style>      
+  .logo .img-responsive {
+          margin: 0px;
+      }
+      .logo {
+        width: 35%;
+        margin-left: 0px;
+        margin-right: auto;
+        display: block;
+        padding-bottom: 2%
+      }
+
+      .container {
+        position: absolute;
+        top: 5%;
+        width: 100%;
+      }
+      label {display:block; width:10%; height:10 px; text-align:right;}</style>
+  </head>
+<body style="background:#cccc00" onload="localStore()">
+<div class="container">
+<div class="image" align="left" >
+<img src="images/toybox.png" class="logo img-responsive">
+<label id ="name"></label></div>
+<div class="loginForm" align="center">
+<h1>Upload the prototype here</h1><br>
+<form action="/upload" enctype="multipart/form-data" method="post">
+<input type="file" name="filefield" multiple="multiple">
+<input type="submit" value="Upload">
+</form>
+</div>
+</div>
+</body>
+</html>

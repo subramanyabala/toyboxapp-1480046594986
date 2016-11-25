@@ -1,16 +1,28 @@
 {
-	"name": "NodejsStarterApp",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"start": "node app.js"
-	},
-	"dependencies": {
-		"express": "4.13.x",
-		"cfenv": "1.0.x"
-	},
-	"repository": {},
-	"engines": {
-		"node": "4.x"
-	} 
+  "name": "NodejsStarterApp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "bluemix-object-storage": "2.0.1",
+    "body-parser": "1.15.2",
+    "cf-nodejs-client": "0.13.0",
+    "cfenv": "1.0.x",
+    "connect-busboy": "0.0.2",
+    "ejs-locals": "1.0.2 ",
+    "express": "4.13.x",
+    "extract-zip": "1.5.0 ",
+    "fs": "0.0.1-security",
+    "node-localstorage": "^1.3.0",
+    "node-rest-client": "2.0.1",
+    "path": "0.12.7",
+    "pkgcloud": "1.4.0",
+    "request": "2.79.0"
+  },
+  "repository": {},
+  "engines": {
+    "node": "4.x"
+  }
 }
