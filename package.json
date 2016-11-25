@@ -19,7 +19,8 @@
     "node-rest-client": "2.0.1",
     "path": "0.12.7",
     "pkgcloud": "1.4.0",
-    "request": "2.79.0"
+    "request": "2.79.0",
+    "unzip": "^0.1.11"
   },
   "repository": {},
   "engines": {
